@@ -50,23 +50,20 @@ ol {
 
 .content {
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 30px;
   margin-inline-start: 30px;
 }
+
 .result {
   display: flex;
   flex-direction: column;
-  /* justify-content: flex-end;
-  align-items: flex-end; */
 }
 
 .result__video-container{
   position: relative;
   inline-size : 711px;
   block-size: 386px;
-  /* margin-bottom: 16px; */
 }
 
 .result__video {
@@ -78,15 +75,41 @@ ol {
 .search-form {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
   margin-block-start: 20px;
-  /* gap: 40px;
-  font-size: 18px;
-  font-weight: 400; */
 }
 
-fieldset, .search-form__textfield {
+fieldset,
+.search-form__textfield {
   border: none;
+}
+
+.search-form__textfield {
+  background-color: transparent;
+  border: none; /* тогда текст прыгает из-за пикселя */
+  /* border: 1px solid transparent; */
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  width: 225px;
+  /* width: 100%; */
+  /* max-width: 225px; */
+  /* в этом макете не работает =( */
+  font-family: inherit;
+  font-size: 18px;
+  appearance: none;
+
+  &:active {
+    border: 1px solid #fff;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 1px solid #fff;
+    outline-offset: 1px;
+  }
 }
 
 .search-form__label {
@@ -108,31 +131,6 @@ fieldset, .search-form__textfield {
   font-weight: 400;
 }
 
-.search-form__textfield {
-  background-color: transparent;
-  border: 1px solid transparent;
-  border-top: 1px solid #fff;
-  border-bottom: 1px solid #fff;
-  color: #fff;
-  /* outline: none; */
-  width: 225px;
-  font-family: inherit;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 21.6px;
-  appearance: none;
-  &:active {
-    border: none;
-    border: 1px solid #fff;
-    /* border-bottom: 1px solid #fff; */
-    outline: none;
-  }
-  &:focus-visible {
-    outline: 1px solid #fff;
-    outline-offset: 1px;
-  }
-}
-
 .search-form__checkbox-list {
   display: flex;
   gap: 15px;
@@ -142,9 +140,7 @@ fieldset, .search-form__textfield {
   display: inline-block;
   width: 19px;
   height: 19px;
-  /* margin-right: 1.5px; */
   vertical-align: middle;
-  /* background-color: #111; */
   border: 1px solid #fff;
 }
 
@@ -160,22 +156,34 @@ fieldset, .search-form__textfield {
 
 .button {
   border: 1px solid #fff;
-  padding: 6px 73px;
+  padding: 5px 73px;
   font-family: inherit;
   font-weight: 700;
+  font-size: 18px;
   color: inherit;
   cursor: pointer;
   background-color: transparent;
+
   &:hover {
     text-decoration: underline;
   }
+
   &:active {
     background-color: #545050;
   }
+
+  &:focus {
+    outline: none;
+  }
+
   &:focus-visible {
     outline: 1px solid #fff;
     outline-offset: 1px;
   }
+}
+
+.search-form__submit-button {
+  align-self: end;
 }
 
 .more-button {
@@ -183,9 +191,11 @@ fieldset, .search-form__textfield {
 }
 
 .content__details {
+  position: relative;
+  bottom: 35px;
   display: flex;
   flex-direction: column;
-  padding: 2px;
+  gap: 18px;
 }
 
 .title {
@@ -193,6 +203,7 @@ fieldset, .search-form__textfield {
   font-size: 75px;
   font-weight: 700;
   line-height: 70.5px;
+  text-transform: uppercase;
 }
 
 .content__accent{
@@ -204,38 +215,51 @@ fieldset, .search-form__textfield {
   display: flex;
   flex-direction: column;
   height: 298px;
-  overflow-y: scroll;
-  gap: 30px;
   width: 100%;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.content__list-item:not(:last-of-type) {
+  margin-bottom: 30px;
 }
 
 .content__card-link{
+  display: block;
   text-decoration: none;
   color: #fff;
-  margin: 2px;
-}
-
-.content__video-card {
-  display: flex;
-  justify-content: flex-start;
   padding: 2px;
+
   &:hover {
     text-decoration: underline;
     text-underline-offset: 3px;
   }
+
   &:active {
     background-color: #545050;
   }
-  /* &:focus {
+
+  &:focus {
     outline: none;
-  } */
-  :focus-visible {
-    border: 1px solid #fff;
-    /* outline-offset: 1px; */
   }
+
+  &:focus-visible {
+    outline: 1px solid #fff;
+    outline-offset: 1px;
+  }
+}
+
+.content__card-link_current { 
+  background-color: #545050; 
+} 
+
+.content__video-card {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.content__video-card-description-container {
+  width: 200px;
 }
 
 .content__video-card-title{
@@ -243,47 +267,16 @@ fieldset, .search-form__textfield {
   font-size: 30px;
   line-height: 41px;
   text-transform: uppercase;
-  
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .content__video-card-description {
-  font-family: Fira Sans Condensed, sans-serif;
   line-height: 16.2px;
-  margin-top: 6px;
-}
-
-.content__video-card-description-container{
-  flex-grow: 1;
 }
 
 .content__video-card-thumbnail {
   width: 194px;
-  /* height: 103px; */
+  height: 103px;
 }
-
-/* .content__card-link:focus {
-  outline: none;
-} */
-
-/* content__card-link:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-} */
-
-/* .content__card-link:focus-visible {
-  outline: 1px solid #fff;
-  outline-offset: 1px;
-} */
-
-/* .content__card-link:active{
-  background-color: #545050;
-} */
-
-.content__card-link_current {
-  background-color: #545050;
-}
-
-/* .content__list:focus-visible,
-.content__card-link:focus-visible {
-  outline: 1px solid #fff;
-} */
