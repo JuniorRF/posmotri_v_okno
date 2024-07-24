@@ -90,11 +90,11 @@ fieldset,
   border-top: 1px solid #fff;
   border-bottom: 1px solid #fff;
   color: #fff;
-  width: 225px;
+  inline-size: 225px;
   /* width: 100%; */
   /* max-width: 225px; */
   /* в этом макете не работает =( */
-  font-family: inherit;
+  /* font-family: inherit; */
   font-size: 18px;
   appearance: none;
 
@@ -139,8 +139,8 @@ fieldset,
 
 .search-form__pseudo-checkbox {
   display: inline-block;
-  width: 19px;
-  height: 19px;
+  inline-size: 19px;
+  block-size: 19px;
   vertical-align: middle;
   border: 1px solid #fff;
 }
@@ -188,7 +188,7 @@ fieldset,
 }
 
 .more-button {
-  width: 100%;
+  inline-size: 100%;
 }
 
 .content__details {
@@ -215,8 +215,8 @@ fieldset,
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 298px;
-  width: 100%;
+  block-size: 298px;
+  inline-size: 100%;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -260,7 +260,7 @@ fieldset,
 }
 
 .content__video-card-description-container {
-  width: 200px;
+  inline-size: 200px;
 }
 
 .content__video-card-title{
