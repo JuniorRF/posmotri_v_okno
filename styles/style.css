@@ -127,6 +127,7 @@ fieldset,
 }
 
 .search-form__fieldset-title {
+  margin-block-end: 1px;
   font-size: 18px;
   font-weight: 400;
 }
